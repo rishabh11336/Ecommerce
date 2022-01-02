@@ -1,6 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product
+
 
 productss = Product.objects.all().values('category').distinct()
 
@@ -10,7 +11,8 @@ def index(request):
     return render(request, 'index.html', {'products': products, 'productss': productss})
 
 
-
+def about(request):
+    return render(request, 'about.html', {'productss': productss})
 
 
 def productpage(request, id):

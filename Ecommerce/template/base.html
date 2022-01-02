@@ -54,8 +54,13 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <a class="btn btn-outline-dark mx-2" href="/search/" role="button">Search</a>
         <a class="btn btn-outline-dark mx-2" href="/cart/" role="button">Cart</a>
-        <a class="btn btn-outline-dark mx-2" href="/signin/" role="button">Sign_in</a>
+        {% if user.is_authenticated %}
+        <a class="btn btn-outline-dark mx-2" href="#" role="button">{{user.username}}</a>
+        <a class="btn btn-outline-dark mx-2" href="/signout/" role="button">SignOut</a>
+        {% else %}
+        <a class="btn btn-outline-dark mx-2" href="/sign/" role="button">Log_in</a>
         <a class="btn btn-outline-dark mx-2" href="/signup/" role="button">Sign_up</a>
+        {% endif %}
       </form>
     </div>
   </div>
